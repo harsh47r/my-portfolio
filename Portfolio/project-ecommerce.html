@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Platform Demo | Harsh Portfolio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { overflow-x: hidden; }
+        .project-hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding-top: 60px;
+        }
+        .demo-badge {
+            padding: 5px 15px;
+            background: rgba(0, 242, 254, 0.2);
+            border: 1px solid rgba(0, 242, 254, 0.4);
+            border-radius: 20px;
+            color: #00f2fe;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .main-showcase {
+            width: 100%;
+            max-width: 1100px;
+            margin-top: 3rem;
+        }
+        .nav-mockup {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--glass-border);
+            margin-bottom: 2rem;
+        }
+        .nav-mockup .brand { font-weight: 800; font-size: 1.5rem; }
+        .nav-mockup .icons i { margin-left: 1rem; cursor: pointer; transition: 0.3s; }
+        .nav-mockup .icons i:hover { color: #00f2fe; transform: scale(1.1); }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .product-card {
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            overflow: hidden;
+        }
+        .product-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .product-card:hover .product-img {
+            transform: scale(1.08) translateY(-5px);
+        }
+        .price {
+            color: #4facfe;
+            font-weight: 800;
+            font-size: 1.4rem;
+            margin: 0.5rem 0;
+        }
+        .add-cart {
+            width: 100%;
+            padding: 0.8rem;
+            margin-top: 1rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .add-cart:hover {
+            background: var(--gradient-1);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 242, 254, 0.3);
+        }
+        .back-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 999;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: white; text-decoration: none;
+            transition: 0.3s; backdrop-filter: blur(10px);
+        }
+        .back-btn:hover {
+            background: var(--gradient-1); border-color: transparent; scale: 1.1;
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <canvas id="particle-canvas"></canvas>
+
+    <a href="index.html" class="back-btn"><i data-lucide="arrow-left"></i></a>
+
+    <section class="project-hero container">
+        <div class="demo-badge" data-aos="fade-down">Interactive Demo</div>
+        <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">NextGen <span class="gradient-text">Store</span></h1>
+        <p class="hero-desc" data-aos="fade-up" data-aos-delay="200">A high-performance e-commerce frontend simulation with modern cart interactions.</p>
+
+        <div class="main-showcase glass-card hover-lift" data-aos="zoom-in" data-aos-delay="300">
+            <div class="nav-mockup">
+                <div class="brand gradient-text">NextGen</div>
+                <div class="icons">
+                    <i data-lucide="search"></i>
+                    <i data-lucide="user"></i>
+                    <i data-lucide="shopping-bag" id="cart-icon"></i>
+                </div>
+            </div>
+
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=800" class="product-img" alt="Sneakers">
+                    <h3>Air Zoom Alpha</h3>
+                    <p class="price">$199.99</p>
+                    <button class="add-cart"><i data-lucide="plus"></i> Add to Cart</button>
+                </div>
+                <!-- Product 2 -->
+                <div class="product-card" data-aos="fade-up" data-aos-delay="500">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=800" class="product-img" alt="Headphones">
+                    <h3>Sonic Pro ANC</h3>
+                    <p class="price">$249.50</p>
+                    <button class="add-cart"><i data-lucide="plus"></i> Add to Cart</button>
+                </div>
+                <!-- Product 3 -->
+                <div class="product-card" data-aos="fade-up" data-aos-delay="600">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=800" class="product-img" alt="Watch">
+                    <h3>Titan Smartwatch X</h3>
+                    <p class="price">$329.00</p>
+                    <button class="add-cart"><i data-lucide="plus"></i> Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Essential Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+        lucide.createIcons();
+
+        // Mini Cart Logic for Demo
+        const btns = document.querySelectorAll('.add-cart');
+        const cartIcon = document.getElementById('cart-icon');
+        let count = 0;
+        btns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i data-lucide="check"></i> Added!';
+                this.style.background = '#10b981'; // Green
+                lucide.createIcons();
+                
+                count++;
+                cartIcon.style.color = '#00f2fe';
+                cartIcon.style.transform = 'scale(1.3)';
+                setTimeout(() => {
+                    cartIcon.style.transform = 'scale(1)';
+                    this.innerHTML = originalText;
+                    this.style.background = 'rgba(255, 255, 255, 0.1)';
+                    lucide.createIcons();
+                }, 1500);
+            });
+        });
+    </script>
+</body>
+</html>
